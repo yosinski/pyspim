@@ -43,7 +43,7 @@ This should print something like the following:
     (should be 123)
     done.
 
-Quick demo
+Basic Usage
 ---------------------
 
 The basic commands for interacting with SPIM to load and run the included [```test.s```](https://github.com/yosinski/pyspim/blob/master/test.s) are shown below.
@@ -57,7 +57,7 @@ The basic commands for interacting with SPIM to load and run the included [```te
     spim.quit()                     # Quit the underlying spim process
 
 
-Use in grading
+Using pyspim to automate grading
 ---------------------
 
 See [```examples/gradeMipsSubmission.py```](https://github.com/yosinski/pyspim/blob/master/examples/gradeMipsSubmission.py) and [```examples/gradeAll.sh```](https://github.com/yosinski/pyspim/blob/master/examples/gradeAll.sh) for examples of how to use pyspim to automate grading of simple MIPS programs.
