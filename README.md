@@ -1,7 +1,7 @@
 About pyspim
 =====================
 
-[pyspim](https://github.com/yosinski/pyspim) is a very minimal python
+[pyspim](https://github.com/yosinski/pyspim) is a very minimal Python
 interface to [SPIM](http://sourceforge.net/projects/spimsimulator/), a
 MIPS32 simulator. Pyspim is known to work on Linux and Mac. It almost
 certainly does not work under Windows.
@@ -53,11 +53,11 @@ The basic commands for interacting with SPIM to load and run the included [```te
     spim.load('test.s')             # Load a .s file
     spim.run()                      # Run the loaded file
     print 't0 is', spim.reg(8)      # Get the value from a register
-    print '(should be 123)'
+
     spim.quit()                     # Quit the underlying spim process
 
 
 Use in grading
 ---------------------
 
-See ```[examples/gradeMipsSubmission.py](https://github.com/yosinski/pyspim/blob/master/examples/gradeMipsSubmission.py)``` and ```[examples/gradeAll.sh](https://github.com/yosinski/pyspim/blob/master/examples/gradeAll.sh)``` for examples of how to use pyspim to automate grading of simple MIPS programs.
+See [```examples/gradeMipsSubmission.py```](https://github.com/yosinski/pyspim/blob/master/examples/gradeMipsSubmission.py) and [```examples/gradeAll.sh```](https://github.com/yosinski/pyspim/blob/master/examples/gradeAll.sh) for examples of how to use pyspim to automate grading of simple MIPS programs.
