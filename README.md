@@ -61,3 +61,15 @@ Use in grading
 ---------------------
 
 See [```examples/gradeMipsSubmission.py```](https://github.com/yosinski/pyspim/blob/master/examples/gradeMipsSubmission.py) and [```examples/gradeAll.sh```](https://github.com/yosinski/pyspim/blob/master/examples/gradeAll.sh) for examples of how to use pyspim to automate grading of simple MIPS programs.
+
+
+
+License
+=======================
+
+Pyspim is released under the [GNU GPL v3](http://www.gnu.org/licenses/gpl.txt).
+
+
+
+
+![-](http://s.yosinski.com/1px_pyspim.png)
