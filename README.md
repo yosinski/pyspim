@@ -13,7 +13,7 @@ Installing pyspim
 
 First install the requirements:
 
-1. (SPIM)[http://spimsimulator.sourceforge.net/]
+1. [SPIM](http://spimsimulator.sourceforge.net/)
 
 2. The [pexepct](http://sourceforge.net/projects/pexpect/) Python module. Users with ```pip``` can install pexpect via
 
