@@ -3,27 +3,26 @@
 import pexpect
 import time
 import re
-import ipdb as pdb
 
 
 
-class SPIM(object):
-    '''Main SPIM class. See main() below for demo.
+class Spim(object):
+    '''Main Spim class. See main() below for demo.
 
-    Requires the command line version of SPIM, available here:
+    Requires the command line version of Spim, available here:
     http://sourceforge.net/projects/spimsimulator/
     '''
 
     def __init__(self, debug = False):
-        '''Spawns a SPIM instance'''
+        '''Spawns a Spim instance'''
 
         self.debug = debug
         
         self.sp = pexpect.spawn ('spim')
         self._expect('\(spim\) ')
         if not '(spim)' in self.sp.after:
-            print 'one more...'
-            self._expect('.*')
+            #print 'one more...'
+            #self._expect('.*')
             raise Exception('Could not get spim prompt. Is it installed?\n\nOutput was:\n%s' % self.sp.after)
 
 
@@ -60,21 +59,22 @@ class SPIM(object):
                              pexpect.EOF,
                              pexpect.TIMEOUT],
                             timeout = 1)
-        #print 'index:', index
         if index == 0:
             raise Exception('Could not load file "%s"' % filename)
         elif index == 1:
             pass
         elif index == 2:
-            raise Exception('SPIM EOF: process died?')
+            raise Exception('Spim EOF: process died?')
         elif index == 3:
-            raise Exception('SPIM timeout')
+            raise Exception('Spim timeout')
         else:
             raise Exception('Unknown error with expect.')
 
 
-    def run(self, timeout = 10):
-        '''Runs the (presumably) loaded program.'''
+    def run(self, timeout = 10, timeoutFatal = False):
+        '''Runs the (presumably) loaded program. Returns None on
+        successful exection or string containing text output on
+        timeout.'''
 
         self._sendline('run')
         index = self._expect(['.*\(spim\) ',
@@ -85,9 +85,17 @@ class SPIM(object):
         if index == 0:
             pass
         elif index == 1:
-            raise Exception('SPIM EOF: process died?')
+            raise Exception('Spim EOF: process died?')
         elif index == 2:
-            raise Exception('SPIM timeout')
+            # Timeout, so just grab whatever is there
+            index = self._expect(['.*',
+                                  pexpect.EOF,
+                                  pexpect.TIMEOUT],
+                                 timeout = .1)
+            if index == 0 or index == 1:
+                return self.sp.before + self.sp.after
+            else:
+                return ''   # Another timeout
         else:
             raise Exception('Unknown error with expect.')
 
@@ -119,11 +127,11 @@ class SPIM(object):
             value = int(match.group(1), 0)   # base 0 -> interpret 0x... as hex
             return value
         elif index == 1:
-            raise Exception('SPIM: Unknown label: %s' % register)
+            raise Exception('Spim: Unknown label: %s' % register)
         elif index == 2:
-            raise Exception('SPIM EOF: process died?')
+            raise Exception('Spim EOF: process died?')
         elif index == 3:
-            raise Exception('SPIM timeout')
+            raise Exception('Spim timeout')
         else:
             raise Exception('Unknown error with expect.')
 
@@ -139,14 +147,14 @@ class SPIM(object):
         if index == 0:
             pass
         elif index == 1:
-            raise Exception('SPIM timeout')
+            raise Exception('Spim timeout')
         else:
             raise Exception('Unknown error with expect.')
 
 
 
 def main():
-    sp = SPIM(debug = False)
+    sp = Spim(debug = False)
 
     sp.load('test.s')             # load a .s file
     sp.run()                      # run it
@@ -157,8 +165,9 @@ def main():
     #print '999 is', sp.reg(999)
 
     # If this line is uncommented, it should produce an error:
-    #sp.load('does_not_exist.s')
+    #sp.load('file_that_does_not_exist.s')
 
+    print 'quitting...'
     sp.quit()                     # quit the underlying spim process
     
     print 'done.'
