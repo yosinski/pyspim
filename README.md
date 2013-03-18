@@ -17,7 +17,7 @@ First install the requirements:
 
 2. The [pexepct](http://sourceforge.net/projects/pexpect/) Python module. Users with ```pip``` can install pexpect via
 
-      sudo pip install pexpect
+        sudo pip install pexpect
 
 Then, install pyspim itself:
 
