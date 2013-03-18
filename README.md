@@ -3,10 +3,8 @@ About pyspim
 
 [pyspim](https://github.com/yosinski/pyspim) is a very minimal python
 interface to [SPIM](http://sourceforge.net/projects/spimsimulator/), a
-MIPS32 simulator.
-
-Pyspim is known to work on Linux and Mac. It almost certainly does not
-work under Windows.
+MIPS32 simulator. Pyspim is known to work on Linux and Mac. It almost
+certainly does not work under Windows.
 
 
 
@@ -15,11 +13,11 @@ Installing pyspim
 
 First install the requirements:
 
-1. SPIM, available at http://spimsimulator.sourceforge.net/
+1. (SPIM)[http://spimsimulator.sourceforge.net/]
 
-2. The [pexepct](http://sourceforge.net/projects/pexpect/) Python module. Users with ```pip``` can install via
+2. The [pexepct](http://sourceforge.net/projects/pexpect/) Python module. Users with ```pip``` can install pexpect via
 
-    sudo pip install pexpect
+      sudo pip install pexpect
 
 Then, install pyspim itself:
 
