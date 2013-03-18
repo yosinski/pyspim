@@ -46,7 +46,7 @@ This should print something like the following:
 Quick demo
 ---------------------
 
-The basic commands for interacting with SPIM to load and run the included ```[test.s](https://github.com/yosinski/pyspim/blob/master/test.s)``` are shown below.
+The basic commands for interacting with SPIM to load and run the included [```test.s```](https://github.com/yosinski/pyspim/blob/master/test.s) are shown below.
 
     spim = Spim(debug = False)      # Start the underlying SPIM process
 
